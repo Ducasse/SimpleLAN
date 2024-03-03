@@ -20,9 +20,7 @@ LNNodeTest >> testName [
 { #category : #tests }
 LNNodeTest >> testPrintingJustInitializedNode [
 
-	self
-		assert: LNNode new printString
-		equals: 'unamed -> \'
+	self assert: LNNode new printString equals: 'unamed -> /'
 ]
 
 { #category : #tests }

@@ -9,6 +9,13 @@ Class {
 }
 
 { #category : #testing }
+LNNode >> accept: aPacket [
+	"Having received aPacket, send it on. This is the default behavior. My subclasses may override me to do something special."
+	
+	self send: aPacket 
+]
+
+{ #category : #testing }
 LNNode >> hasNextNode [
 	
 	^ nextNode isNotNil
@@ -44,4 +51,14 @@ LNNode >> printOn: aStream [
 	nextNode
 		ifNil: [ aStream nextPutAll: '/' ]
 		ifNotNil: [ aStream nextPutAll: nextNode name ]
+]
+
+{ #category : #testing }
+LNNode >> send: aPacket [
+	"Precondition: self has a nextNode"
+
+	 self name trace.
+	' sends a packet to: ' trace.
+	 self nextNode name traceCr. 
+	 self nextNode accept: aPacket.
 ]
