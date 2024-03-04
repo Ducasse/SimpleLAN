@@ -22,6 +22,11 @@ LNPacket >> addresseeName: aString [
 ]
 
 { #category : #accessing }
+LNPacket >> content: aString [ 
+	self shouldBeImplemented.
+]
+
+{ #category : #accessing }
 LNPacket >> contents [
 	^ contents
 ]

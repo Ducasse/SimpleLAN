@@ -47,13 +47,13 @@ LNWorkstation class >> example3 [
 { #category : #testing }
 LNWorkstation >> accept: aPacket [
 
-	(aPacket isAddressedTo: self name)
+	(aPacket isAddressedTo: self)
 		ifTrue: [ (self name , ' accepted packet') traceCr ]
 		ifFalse: [ super accept: aPacket ]
 ]
 
 { #category : #testing }
 LNWorkstation >> emit: aPacket [
-
+	
 	self send: aPacket
 ]
