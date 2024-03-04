@@ -41,9 +41,9 @@ LNPacket >> initialize [
 ]
 
 { #category : #testing }
-LNPacket >> isAddressedTo: aString [
+LNPacket >> isAddressedTo: aNode [
 
-	^ addresseeName = aString
+	^ addresseeName = aNode name
 ]
 
 { #category : #accessing }
