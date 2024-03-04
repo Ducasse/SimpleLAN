@@ -8,6 +8,15 @@ Class {
 	#category : #SimpleLAN
 }
 
+{ #category : #examples }
+LNNode class >> example1 [
+
+	<script>
+	(LNNode new
+    name: 'Mac' ;
+    nextNode: (LNNode new name: 'PC1'))  accept: (LNPacket new addresseeName: 'Mac')
+]
+
 { #category : #testing }
 LNNode >> accept: aPacket [
 	"Having received aPacket, send it on. This is the default behavior. My subclasses may override me to do something special."
@@ -39,6 +48,11 @@ LNNode >> name: aString [
 ]
 
 { #category : #accessing }
+LNNode >> nextNode [
+	^ nextNode
+]
+
+{ #category : #accessing }
 LNNode >> nextNode: aLNNode [ 
 	nextNode := aLNNode
 ]
@@ -55,10 +69,10 @@ LNNode >> printOn: aStream [
 
 { #category : #testing }
 LNNode >> send: aPacket [
-	"Precondition: self has a nextNode"
 
-	 self name trace.
-	' sends a packet to: ' trace.
-	 self nextNode name traceCr. 
-	 self nextNode accept: aPacket.
+	nextNode ifNotNil: [
+		self name trace.
+		' sends a packet to: ' trace.
+		nextNode name traceCr.
+		nextNode accept: aPacket ]
 ]
